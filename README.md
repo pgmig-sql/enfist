@@ -19,4 +19,3 @@ See [UPSTREAM.md](UPSTREAM.md) for details.
 * [ ] создать тег
 * [ ] удалить тег
 
-
