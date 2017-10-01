@@ -3,8 +3,15 @@
 This project based on [pgrpc-sql](https://github.com/pgrpc/pgrpc-sql).
 See [UPSTREAM.md](UPSTREAM.md) for details.
 
+## Usage
+
+See enfist config at [dcape](https://github.com/dopos/dcape/tree/master/apps/enfist).
 
 ## TODO
+
+### build
+
+* [ ] rpc - убрать ссылки на схему rpc, использовать search_path по списку из конфига
 
 ### sql
 
