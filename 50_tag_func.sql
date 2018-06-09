@@ -23,22 +23,6 @@ $_$
    ORDER BY code
 $_$;
 
-SELECT rpc.add('tag'
-, 'Список тегов'
-, '{
-    "a_mask": "Regexp тега"
-  , "a_show_data": "Включить в результат переменные"
-   }'
-, '{
-    "code":    "Тег"
-  , "alias_for": "Тег, откуда берутся переменные"
-  , "data": "Переменные тега"
-  , "updated_at": "Время последнего изменения"
-  }'
-,'{}'
-, 5
-);
-
 -- -----------------------------------------------------------------------------
 
 CREATE OR REPLACE FUNCTION tag_vars(a_code TEXT) RETURNS TEXT STABLE LANGUAGE 'sql'
@@ -47,14 +31,6 @@ $_$
  -- TODO: recurse
   SELECT data FROM tag WHERE code = $1
 $_$;
-
-SELECT rpc.add('tag_vars'
-, 'Переменные тега'
-, '{"a_code":  "Тег"}'
-, '{"tag_vars":"Переменные тега"}'
-,'{}'
-, 5
-);
 
 -- -----------------------------------------------------------------------------
 
@@ -76,14 +52,6 @@ $_$
   END;
 $_$;
 
-SELECT rpc.add('tag_set'
-, 'Сохранить переменные тега'
-, '{"a_code": "Тег", "a_data": "Переменные тега"}'
-, '{"tag_set": "TRUE если тег новый"}'
-,'{}'
-, 5
-);
-
 -- -----------------------------------------------------------------------------
 
 CREATE OR REPLACE FUNCTION tag_append(a_code TEXT, a_data TEXT) RETURNS BOOL VOLATILE LANGUAGE 'plpgsql'
@@ -94,14 +62,6 @@ $_$
     RETURN FOUND;
   END;
 $_$;
-
-SELECT rpc.add('tag_append'
-, 'Добавить данные к переменным тега'
-, '{"a_code":  "Тег", "a_data": "Переменные тега"}'
-, '{"tag_append":"Данные добавлены"}'
-,'{}'
-, 5
-);
 
 -- -----------------------------------------------------------------------------
 
@@ -114,10 +74,63 @@ $_$
   END;
 $_$;
 
-SELECT rpc.add('tag_del'
-, 'Удалить тег'
-, '{"a_code":  "Тег"}'
-, '{"tag_del":"Тег удален"}'
-,'{}'
-, 5
-);
+-- -----------------------------------------------------------------------------
+-- регистрация методов
+
+DO $$
+  DECLARE v_search_path TEXT;
+  BEGIN
+    IF EXISTS (SELECT (1) FROM information_schema.schemata WHERE schema_name = 'rpc' ) THEN     
+      v_search_path := current_setting('search_path');  
+      PERFORM rpc.del(regexp_replace(v_search_path, '(^\w+),(.+|$)',E'\\1','i'));
+      PERFORM rpc.add('tag'
+      , 'Список тегов'
+      , '{
+            "a_mask": "Regexp тега"
+          , "a_show_data": "Включить в результат переменные"
+      }'
+      , '{
+            "code":    "Тег"
+          , "alias_for": "Тег, откуда берутся переменные"
+          , "data": "Переменные тега"
+          , "updated_at": "Время последнего изменения"
+          }'
+      ,'{}'
+      , 5
+      );
+        
+      PERFORM rpc.add('tag_vars'
+      , 'Переменные тега'
+      , '{"a_code":  "Тег"}'
+      , '{"tag_vars":"Переменные тега"}'
+      ,'{}'
+      , 5
+      );
+      
+      PERFORM rpc.add('tag_set'
+      , 'Сохранить переменные тега'
+      , '{"a_code": "Тег", "a_data": "Переменные тега"}'
+      , '{"tag_set": "TRUE если тег новый"}'
+      ,'{}'
+      , 5
+      );
+      
+      PERFORM rpc.add('tag_append'
+      , 'Добавить данные к переменным тега'
+      , '{"a_code":  "Тег", "a_data": "Переменные тега"}'
+      , '{"tag_append":"Данные добавлены"}'
+      ,'{}'
+      , 5
+      );
+
+      PERFORM rpc.add('tag_del'
+      , 'Удалить тег'
+      , '{"a_code":  "Тег"}'
+      , '{"tag_del":"Тег удален"}'
+      ,'{}'
+      , 5
+      );   
+
+    END IF;
+  END
+$$;

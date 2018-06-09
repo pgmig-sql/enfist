@@ -10,7 +10,7 @@ DO $$
       WHERE n.nspname = current_schema() AND p.proname = 'package_version'
       ) THEN
       -- вызывем package_version, если она есть
-      IF package_version() >= package_version_new() THEN
+      IF package_version() > package_version_new() THEN
         RAISE EXCEPTION 'Newest lib version (%) loaded already', package_version();
       END IF;
     ELSE
