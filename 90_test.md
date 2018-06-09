@@ -1,5 +1,5 @@
-#  90_test
-## tag_set
+#  enfist/90_test
+## enfist/90_test
 
 ```sql
 SELECT tag_set('test', E'#anno1\nvar1=val1\n#anno2\nvar2="val 2"')
@@ -9,7 +9,7 @@ SELECT tag_set('test', E'#anno1\nvar1=val1\n#anno2\nvar2="val 2"')
 |--------
 |t
 
-## tag_vars
+## enfist/90_test
 
 ```sql
 SELECT tag_vars('test')
@@ -22,7 +22,7 @@ SELECT tag_vars('test')
 |#anno2      +
 |var2="val 2"
 
-## tag
+## enfist/90_test
 
 ```sql
 SELECT code, alias_for, data, (updated_at IS NOT NULL) AS is_logged FROM tag('test')
@@ -32,7 +32,7 @@ SELECT code, alias_for, data, (updated_at IS NOT NULL) AS is_logged FROM tag('te
 |-----|-----------|------|-----------
 |test |           |      | t
 
-## tag_del
+## enfist/90_test
 
 ```sql
 SELECT tag_del('test')
@@ -42,7 +42,7 @@ SELECT tag_del('test')
 |--------
 |t
 
-## tag_del (false)
+## enfist/90_test
 
 ```sql
 SELECT tag_del('test')
@@ -51,18 +51,4 @@ SELECT tag_del('test')
 |tag_del 
 |--------
 |f
-
-## rpc methods
-
-```sql
-SELECT * FROM rpc.index('env') WHERE code LIKE 'tag%' ORDER BY code
-;
-```
-|   code    | nspname |  proname   | max_age |               anno                | sample | is_ro 
-|-----------|---------|------------|---------|-----------------------------------|--------|-------
-|tag        | env     | tag        |       5 | Список тегов                      | {}     | t
-|tag_append | env     | tag_append |       5 | Добавить данные к переменным тега | {}     | f
-|tag_del    | env     | tag_del    |       5 | Удалить тег                       | {}     | f
-|tag_set    | env     | tag_set    |       5 | Сохранить переменные тега         | {}     | f
-|tag_vars   | env     | tag_vars   |       5 | Переменные тега                   | {}     | t
 

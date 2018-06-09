@@ -4,7 +4,10 @@
 */
 
 -- Вывод в логи информации о коннекте
-\qecho 'Database: ':HOST':':PORT'@':DBNAME
+\conninfo
+
+-- зависимости
+SELECT poma.pkg_require('rpc');
 
 -- Создание схемы
-CREATE SCHEMA IF NOT EXISTS :SCH;
+CREATE SCHEMA IF NOT EXISTS :PKG;

@@ -1,7 +1,6 @@
 # Environment file storage as pgrpc-sql package
 
-This project based on [pgrpc-sql](https://github.com/pgrpc/pgrpc-sql).
-See [UPSTREAM.md](UPSTREAM.md) for details.
+This project based on [poma](https://github.com/pomasql/poma).
 
 ## Usage
 
