@@ -1,4 +1,4 @@
-# Environment file storage as pgrpc-sql package
+# Environment file storage poma package
 
 This project based on [poma](https://github.com/pomasql/poma).
 
@@ -25,3 +25,8 @@ See enfist config at [dcape](https://github.com/dopos/dcape/tree/master/apps/enf
 * [ ] создать тег
 * [ ] удалить тег
 
+## License
+
+The MIT License (MIT), see [LICENSE](LICENSE).
+
+Copyright (c) 2018 Aleksei Kovrizhkin <lekovr+poma@gmail.com>
