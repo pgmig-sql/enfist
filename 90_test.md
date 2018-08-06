@@ -1,5 +1,5 @@
 #  enfist/90_test
-## enfist/90_test
+## tag_set
 
 ```sql
 SELECT tag_set('test', E'#anno1\nvar1=val1\n#anno2\nvar2="val 2"')
@@ -9,7 +9,7 @@ SELECT tag_set('test', E'#anno1\nvar1=val1\n#anno2\nvar2="val 2"')
 |--------
 |t
 
-## enfist/90_test
+## tag_vars
 
 ```sql
 SELECT tag_vars('test')
@@ -22,7 +22,7 @@ SELECT tag_vars('test')
 |#anno2      +
 |var2="val 2"
 
-## enfist/90_test
+## tag
 
 ```sql
 SELECT code, alias_for, data, (updated_at IS NOT NULL) AS is_logged FROM tag('test')
@@ -32,7 +32,7 @@ SELECT code, alias_for, data, (updated_at IS NOT NULL) AS is_logged FROM tag('te
 |-----|-----------|------|-----------
 |test |           |      | t
 
-## enfist/90_test
+## tag_del
 
 ```sql
 SELECT tag_del('test')
@@ -42,7 +42,7 @@ SELECT tag_del('test')
 |--------
 |t
 
-## enfist/90_test
+## tag_del (false)
 
 ```sql
 SELECT tag_del('test')
