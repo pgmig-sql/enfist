@@ -5,13 +5,18 @@
 
 -- -----------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS tag(
+CREATE TABLE IF NOT EXISTS pers.enfist_tag(
   code       TEXT PRIMARY KEY
-, alias_for  TEXT
+, alias_for  TEXT REFERENCES pers.enfist_tag(code)
 , data       TEXT
 , updated_at TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
-COMMENT ON TABLE tag IS 'Config tag';
+SELECT poma.comment('t', 'pers.enfist_tag', 'Файл настроек'
+, 'code',  'Код'
+, 'alias_for', 'Синоним для кода'
+, 'data',   'Содержимое файла (если не синоним)'
+, 'updated_at',  'Время последнего обновления'
+);
 
 -- -----------------------------------------------------------------------------
 /*

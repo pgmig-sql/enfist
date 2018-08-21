@@ -25,6 +25,10 @@ See enfist config at [dcape](https://github.com/dopos/dcape/tree/master/apps/enf
 * [ ] создать тег
 * [ ] удалить тег
 
+### dcape
+
+* [ ] для dcape мы можем сохранять пользователя - автора последних изменений
+
 ## License
 
 The MIT License (MIT), see [LICENSE](LICENSE).
