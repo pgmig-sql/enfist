@@ -96,7 +96,7 @@ $_$
     v_is_new BOOL := TRUE;
   BEGIN
     IF EXISTS( SELECT 1 FROM pers.enfist_tag WHERE code = a_code) THEN
-      DELETE FROM tag WHERE code = a_code;
+      DELETE FROM pers.enfist_tag WHERE code = a_code;
       v_is_new := FALSE;
     END IF;
     INSERT INTO pers.enfist_tag (code, data) VALUES (a_code, a_data);

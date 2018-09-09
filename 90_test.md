@@ -2,12 +2,22 @@
 ## tag_set
 
 ```sql
-SELECT tag_set('_enfist_test_', E'#anno1\nvar1=val1\n#anno2\nvar2="val 2"')
+SELECT tag_set('_enfist_test_', E'#anno1\nvar1=val1\n#anno2\nvar2="val 0"')
 ;
 ```
 |tag_set 
 |--------
 |t
+
+## tag_set update
+
+```sql
+SELECT tag_set('_enfist_test_', E'#anno1\nvar1=val1\n#anno2\nvar2="val 2"')
+;
+```
+|tag_set 
+|--------
+|f
 
 ## tag_vars
 

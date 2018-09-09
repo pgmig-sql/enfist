@@ -13,6 +13,9 @@ DELETE FROM pers.enfist_tag WHERE code ~ :'MASK';
 
 
 SELECT poma.test('tag_set'); -- BOT
+SELECT tag_set(:'TAG', E'#anno1\nvar1=val1\n#anno2\nvar2="val 0"'); -- EOT
+
+SELECT poma.test('tag_set update'); -- BOT
 SELECT tag_set(:'TAG', E'#anno1\nvar1=val1\n#anno2\nvar2="val 2"'); -- EOT
 
 SELECT poma.test('tag_vars'); -- BOT
