@@ -2,7 +2,7 @@
 ## tag_set
 
 ```sql
-SELECT tag_set('_enfist_test_', E'#anno1\nvar1=val1\n#anno2\nvar2="val 0"')
+SELECT enfist.tag_set('_enfist_test_', E'#anno1\nvar1=val1\n#anno2\nvar2="val 0"')
 ;
 ```
 |tag_set 
@@ -12,7 +12,7 @@ SELECT tag_set('_enfist_test_', E'#anno1\nvar1=val1\n#anno2\nvar2="val 0"')
 ## tag_set update
 
 ```sql
-SELECT tag_set('_enfist_test_', E'#anno1\nvar1=val1\n#anno2\nvar2="val 2"')
+SELECT enfist.tag_set('_enfist_test_', E'#anno1\nvar1=val1\n#anno2\nvar2="val 2"')
 ;
 ```
 |tag_set 
@@ -22,7 +22,7 @@ SELECT tag_set('_enfist_test_', E'#anno1\nvar1=val1\n#anno2\nvar2="val 2"')
 ## tag_vars
 
 ```sql
-SELECT tag_vars('_enfist_test_')
+SELECT enfist.tag_vars('_enfist_test_')
 ;
 ```
 |  tag_vars   
@@ -35,7 +35,7 @@ SELECT tag_vars('_enfist_test_')
 ## tag_set1
 
 ```sql
-SELECT tag_set('_enfist_test1_', E'#test1')
+SELECT enfist.tag_set('_enfist_test1_', E'#test1')
 ;
 ```
 |tag_set 
@@ -45,7 +45,7 @@ SELECT tag_set('_enfist_test1_', E'#test1')
 ## tag (sort 1, 2)
 
 ```sql
-SELECT code, data, (updated_at IS NOT NULL) AS is_logged FROM tag('_enfist_test')
+SELECT code, data, (updated_at IS NOT NULL) AS is_logged FROM enfist.tag('_enfist_test')
 ;
 ```
 |     code      | data | is_logged 
@@ -56,7 +56,7 @@ SELECT code, data, (updated_at IS NOT NULL) AS is_logged FROM tag('_enfist_test'
 ## tag sort 1 (-1, 2)
 
 ```sql
-SELECT code, updated_at = CURRENT_DATE-1 as is_prev FROM tag('_enfist_test', a_sort := 1)
+SELECT code, updated_at = CURRENT_DATE-1 as is_prev FROM enfist.tag('_enfist_test', a_sort := 1)
 ;
 ```
 |     code      | is_prev 
@@ -67,7 +67,7 @@ SELECT code, updated_at = CURRENT_DATE-1 as is_prev FROM tag('_enfist_test', a_s
 ## tag sort 2 (2, 1)
 
 ```sql
-SELECT code, updated_at = CURRENT_DATE-1 as is_prev FROM tag('_enfist_test', a_sort := 2)
+SELECT code, updated_at = CURRENT_DATE-1 as is_prev FROM enfist.tag('_enfist_test', a_sort := 2)
 ;
 ```
 |     code      | is_prev 
@@ -78,7 +78,7 @@ SELECT code, updated_at = CURRENT_DATE-1 as is_prev FROM tag('_enfist_test', a_s
 ## tag sort 3 (2, -1)
 
 ```sql
-SELECT code, updated_at = CURRENT_DATE-1 as is_prev FROM tag('_enfist_test', a_sort := 3)
+SELECT code, updated_at = CURRENT_DATE-1 as is_prev FROM enfist.tag('_enfist_test', a_sort := 3)
 ;
 ```
 |     code      | is_prev 
@@ -89,7 +89,7 @@ SELECT code, updated_at = CURRENT_DATE-1 as is_prev FROM tag('_enfist_test', a_s
 ## tag sort 3 (2x, -1)
 
 ```sql
-SELECT code, updated_at = CURRENT_DATE-1 as is_prev FROM tag('_enfist_test', a_sort := 3)
+SELECT code, updated_at = CURRENT_DATE-1 as is_prev FROM enfist.tag('_enfist_test', a_sort := 3)
 ;
 ```
 |     code      | is_prev 
@@ -100,7 +100,7 @@ SELECT code, updated_at = CURRENT_DATE-1 as is_prev FROM tag('_enfist_test', a_s
 ## tag sort 4 (-2x, 1)
 
 ```sql
-SELECT code, updated_at = CURRENT_DATE-1 as is_prev FROM tag('_enfist_test', a_sort := 4)
+SELECT code, updated_at = CURRENT_DATE-1 as is_prev FROM enfist.tag('_enfist_test', a_sort := 4)
 ;
 ```
 |     code      | is_prev 
@@ -111,7 +111,7 @@ SELECT code, updated_at = CURRENT_DATE-1 as is_prev FROM tag('_enfist_test', a_s
 ## tag page
 
 ```sql
-SELECT code from tag('_enfist_test', a_off := 1, a_lim := 1)
+SELECT code from enfist.tag('_enfist_test', a_off := 1, a_lim := 1)
 ;
 ```
 |     code      
@@ -121,7 +121,7 @@ SELECT code from tag('_enfist_test', a_off := 1, a_lim := 1)
 ## tag_count
 
 ```sql
-SELECT tag_count('_enfist_test')
+SELECT enfist.tag_count('_enfist_test')
 ;
 ```
 |tag_count 
@@ -131,7 +131,7 @@ SELECT tag_count('_enfist_test')
 ## tag_del
 
 ```sql
-SELECT tag_del('_enfist_test_')
+SELECT enfist.tag_del('_enfist_test_')
 ;
 ```
 |tag_del 
@@ -141,7 +141,7 @@ SELECT tag_del('_enfist_test_')
 ## tag_del (false)
 
 ```sql
-SELECT tag_del('_enfist_test_')
+SELECT enfist.tag_del('_enfist_test_')
 ;
 ```
 |tag_del 
