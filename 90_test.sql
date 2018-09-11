@@ -3,12 +3,13 @@
 */
 
 \set MASK _enfist_test
-\set TAG :MASK '_'
-\set TAG1 :MASK 1_
+-- underscore order depends on collation, so don't mix it with other chars
+\set TAG :MASK  '0_'
+\set TAG1 :MASK '1_'
 
 -- do not show deleted rows count
 \set QUIET on
-DELETE FROM pers.enfist_tag WHERE code ~ :'MASK';
+DELETE FROM pers.enfist_tag WHERE code LIKE :'MASK'||'%';
 \set QUIET off
 
 
