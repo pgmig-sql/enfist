@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS pers.enfist_tag(
 , data       TEXT
 , updated_at TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
-SELECT poma.comment('t', 'pers.enfist_tag', 'Файл настроек'
+SELECT pgmig.comment('t', 'pers.enfist_tag', 'Файл настроек'
 , 'code',  'Код'
 , 'alias_for', 'Синоним для кода'
 , 'data',   'Содержимое файла (если не синоним)'

@@ -2,4 +2,4 @@
   Зависимости пакета
 */
 
-SELECT poma.pkg_require(:'PKG', 'rpc');
+SELECT pgmig.pkg_require('rpc',0.02);
